@@ -23,6 +23,10 @@ class InputNeuron {
         this.operation = Operations.Add;
     }
 
+    getValue() {
+        
+    }
+
     draw() {
         this.context.drawImage(this.sprite, this.position.x - this.offset.x, this.position.y - this.offset.y);
     }
