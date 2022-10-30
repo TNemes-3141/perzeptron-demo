@@ -6,10 +6,11 @@ const Operations = Object.freeze({
 });
 
 class InputNeuron {
-    constructor() {
+    constructor(context) {
+        this.context = context;
         this.position = {
-            x: 0,
-            y: 0,
+            x: 100,
+            y: 100,
         };
         this.sprite = "";
         this.value = 0;
@@ -18,6 +19,13 @@ class InputNeuron {
     }
 
     draw() {
-        context.ellipse(this.position.x, this.position.y, 100, 100);
+        this.context.fillRect(this.position.x, this.position.y, 100, 100);
+    }
+
+    update() {
+        this.draw();
+        this.position.y += 10;
     }
 }
+
+export default InputNeuron;
