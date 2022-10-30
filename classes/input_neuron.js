@@ -24,7 +24,6 @@ class InputNeuron {
 
     update() {
         this.draw();
-        this.position.y += 10;
     }
 }
 

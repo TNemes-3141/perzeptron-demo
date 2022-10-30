@@ -1,22 +1,31 @@
-import InputNeuron from "./classes/input_neuron.js";
+// Entry-point for HTML5 canvas application
+// (c) Tamas Nemes, 2022
+// DO NOT TOUCH THIS FILE!
 
-const canvas = document.getElementById("game-canvas");
-const context = canvas.getContext("2d");
-canvas.width = innerWidth;
-canvas.height = 720;
+import { main, clear } from "./main.js";
 
-console.log(context);
-
-const n1 = new InputNeuron(context);
-
-function main() {
-    n1.update();
+// Update instances
+function update() {
+    let instances = main(); 
+    instances.forEach(instance => {
+        if (typeof(instance.update) == "function")
+        {
+            instance.update();
+        }
+    });
 }
 
+// Main loop
 function myApp () {
+    clear();
+    try {
+        update();
+    }
+    catch (e) {
+        throw e;
+    }
     requestAnimationFrame(myApp);
-    context.clearRect(0, 0, canvas.width, canvas.height);
-    main();
 }
 
+// Run app
 myApp();
