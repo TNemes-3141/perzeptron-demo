@@ -40,13 +40,30 @@ const mainNeuron = new MainNeuron(context, {
     y: 360,
     sprite: "./assets/images/main_node.png",
     offsetX: 75,
-    offsetY: 90
+    offsetY: 50,
 })
 mainNeuron.addInput(input1);
 mainNeuron.addInput(input2);
 mainNeuron.addInput(input3);
 
 const RENDER_PRORITY = [input1, input2, input3, mainNeuron];
+
+let fontRegular = "sans-serif";
+let fontTitle = "sans-serif";
+const font1 = new FontFace("abel", "url(./assets/fonts/Abel-Regular.ttf)");
+const font2 = new FontFace("unica-one", "url(./assets/fonts/UnicaOne-Regular.ttf)");
+font1.load().then(() => {
+    input1.font = "abel";
+    input2.font = "abel";
+    input3.font = "abel";
+    fontRegular = "abel";
+});
+font2.load().then(() => {
+    input1.font = "unica-one";
+    input2.font = "unica-one";
+    input3.font = "unica-one";
+    fontTitle = "unica-one";
+});
 
 export function main() {
     let input = [255, 165, 79];
