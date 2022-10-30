@@ -39,6 +39,10 @@ class MainNeuron {
         this.value = result;
     }
 
+    forwardResult() {
+        this.output.value = this.value < 0 ? 0 : 1;
+    }
+
     draw() {
         this.context.drawImage(this.sprite, this.position.x - this.offset.x, this.position.y - this.offset.y);
         let fontSize = 25;
@@ -50,6 +54,7 @@ class MainNeuron {
 
     update() {
         this.draw();
+        this.forwardResult();
     }
 }
 

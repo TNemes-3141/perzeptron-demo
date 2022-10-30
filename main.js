@@ -1,6 +1,7 @@
 import MainNeuron from "./classes/main_neuron.js";
 import InputNeuron from "./classes/input_neuron.js";
 import BiasNeuron from "./classes/bias_neuron.js";
+import OutputNeuron from "./classes/output_neuron.js";
 
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
@@ -43,7 +44,14 @@ const biasNeuron = new BiasNeuron(context, {
     offsetX: 80,
     offsetY: 50,
     value: 1,
-})
+});
+const outputNeuron = new OutputNeuron(context, {
+    x: 950,
+    y: 360,
+    sprite: "./assets/images/output_node.png",
+    offsetX: 50,
+    offsetY: 50,
+});
 const mainNeuron = new MainNeuron(context, {
     x: 650,
     y: 360,
@@ -55,8 +63,9 @@ mainNeuron.addInput(input1);
 mainNeuron.addInput(input2);
 mainNeuron.addInput(input3);
 mainNeuron.addBias(biasNeuron);
+mainNeuron.addOutput(outputNeuron);
 
-const RENDER_PRORITY = [input1, input2, input3, biasNeuron, mainNeuron];
+const RENDER_PRORITY = [input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
 
 export function main() {
     context.font = "40px UnicaOne";
