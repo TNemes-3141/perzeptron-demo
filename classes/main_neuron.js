@@ -39,6 +39,11 @@ class MainNeuron {
 
     draw() {
         this.context.drawImage(this.sprite, this.position.x - this.offset.x, this.position.y - this.offset.y);
+        let fontSize = 25;
+        this.context.font = fontSize + "px Abel";
+        this.context.textAlign = "center";
+        this.context.fillStyle = "white";
+        this.context.fillText(this.value, this.position.x - this.sprite.width / 4, this.position.y + fontSize / 4);
     }
 
     update() {

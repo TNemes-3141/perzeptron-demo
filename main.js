@@ -59,8 +59,8 @@ export function main() {
     let inputValues = [255, 165, 79];
 
     input1.value = inputValues[0];
-    input1.value = inputValues[1];
-    input1.value = inputValues[2];
+    input2.value = inputValues[1];
+    input3.value = inputValues[2];
 
     mainNeuron.getInputs();
 
