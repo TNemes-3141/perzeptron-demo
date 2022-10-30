@@ -6,21 +6,25 @@ const Operations = Object.freeze({
 });
 
 class InputNeuron {
-    constructor(context) {
+    constructor(context, {x, y, sprite, offsetX, offsetY, value, weight}) {
         this.context = context;
         this.position = {
-            x: 100,
-            y: 100,
+            x: x,
+            y: y,
         };
-        this.sprite = "";
-        this.value = 0;
-        this.weight = 0;
+        this.sprite = new Image();
+        this.sprite.src = sprite;
+        this.offset = {
+            x: offsetX,
+            y: offsetY,
+        }
+        this.value = value;
+        this.weight = weight;
         this.operation = Operations.Add;
     }
 
     draw() {
-        this.context.fillStyle = "black";
-        this.context.fillRect(this.position.x, this.position.y, 100, 100);
+        this.context.drawImage(this.sprite, this.position.x - this.offset.x, this.position.y - this.offset.y);
     }
 
     update() {
