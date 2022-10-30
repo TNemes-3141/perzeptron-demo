@@ -15,6 +15,7 @@ class MainNeuron {
         this.bias = null;
         this.output = null;
         this.value = 0;
+        this.font = "Abel";
     }
 
     addInput(input) {
@@ -34,13 +35,14 @@ class MainNeuron {
         this.inputs.forEach(inputNode => {
             result += inputNode.getValue();
         });
+        result += this.bias.getValue();
         this.value = result;
     }
 
     draw() {
         this.context.drawImage(this.sprite, this.position.x - this.offset.x, this.position.y - this.offset.y);
         let fontSize = 25;
-        this.context.font = fontSize + "px Abel";
+        this.context.font = fontSize + "px " + this.font;
         this.context.textAlign = "center";
         this.context.fillStyle = "white";
         this.context.fillText(this.value, this.position.x - this.sprite.width / 4, this.position.y + fontSize / 4);

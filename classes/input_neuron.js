@@ -44,7 +44,7 @@ class InputNeuron {
     draw() {
         this.context.drawImage(this.sprite, this.position.x - this.offset.x, this.position.y - this.offset.y);
         let fontSize = 30;
-        this.context.font = fontSize + "px Abel";
+        this.context.font = fontSize + "px " + this.font;
         this.context.textAlign = "center";
         this.context.fillStyle = "white";
         this.context.fillText(this.value, this.position.x, this.position.y + fontSize / 4);
