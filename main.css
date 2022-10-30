@@ -6,10 +6,23 @@
 }
 
 #game-div {
-    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+#inner-game-div {
     border-radius: 15px;
-    width: 1280px;
-    height: 720px;
-    margin: auto;
     overflow: hidden;
+    height: 720px;
+    margin: 0;
+    padding: 0;
+    
+    box-shadow: 10px 10px 25px -5px rgba(0, 0, 0, 0.70);
+    -webkit-box-shadow: 10px 10px 25px -5px rgba(0, 0, 0, 0.70);
+    -moz-box-shadow: 10px 10px 25px -5px rgba(0, 0, 0, 0.70);
+}
+
+#game_canvas {
+    margin: 0;
 }

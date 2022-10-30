@@ -9,11 +9,11 @@ console.log(context);
 
 const n1 = new InputNeuron(context);
 
+const RENDER_PRORITY = [n1];
+
 export function main() {
 
-    let instances = [n1]
-    console.log(instances);
-    return instances;
+    return RENDER_PRORITY;
 }
 
 export function clear() {

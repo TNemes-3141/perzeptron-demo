@@ -19,6 +19,7 @@ class InputNeuron {
     }
 
     draw() {
+        this.context.fillStyle = "black";
         this.context.fillRect(this.position.x, this.position.y, 100, 100);
     }
 
