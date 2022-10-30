@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'UnicaOne';
+    src: url('./assets/fonts/UnicaOne-Regular.ttf');
+}
+@font-face {
+    font-family: 'Abel';
+    src: url('./assets/fonts/Abel-Regular.ttf');
+}
+
 * {
     margin: 0;
     padding: 0;

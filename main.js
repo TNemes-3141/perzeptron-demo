@@ -48,29 +48,19 @@ mainNeuron.addInput(input3);
 
 const RENDER_PRORITY = [input1, input2, input3, mainNeuron];
 
-let fontRegular = "sans-serif";
-let fontTitle = "sans-serif";
-const font1 = new FontFace("abel", "url(./assets/fonts/Abel-Regular.ttf)");
-const font2 = new FontFace("unica-one", "url(./assets/fonts/UnicaOne-Regular.ttf)");
-font1.load().then(() => {
-    input1.font = "abel";
-    input2.font = "abel";
-    input3.font = "abel";
-    fontRegular = "abel";
-});
-font2.load().then(() => {
-    input1.font = "unica-one";
-    input2.font = "unica-one";
-    input3.font = "unica-one";
-    fontTitle = "unica-one";
-});
-
 export function main() {
-    let input = [255, 165, 79];
+    context.font = "40px UnicaOne";
+    context.textAlign = "center";
+    context.fillStyle = "white";
+    context.fillText("R", input1.position.x, input1.position.y - 60);
+    context.fillText("G", input2.position.x, input2.position.y - 60);
+    context.fillText("B", input3.position.x, input3.position.y - 60);
 
-    input1.value = input[0];
-    input1.value = input[1];
-    input1.value = input[2];
+    let inputValues = [255, 165, 79];
+
+    input1.value = inputValues[0];
+    input1.value = inputValues[1];
+    input1.value = inputValues[2];
 
     mainNeuron.getInputs();
 

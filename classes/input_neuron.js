@@ -21,11 +21,11 @@ class InputNeuron {
         this.value = value;
         this.weight = weight;
         this.operation = Operations.Add;
-        this.font = "sans-serif";
+        this.font = "Abel";
     }
 
     getValue() {
-
+        
     }
 
     draw() {
