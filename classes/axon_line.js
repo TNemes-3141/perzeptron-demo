@@ -34,8 +34,8 @@ class AxonLine {
         this.context.beginPath();
         for (let i = 0; i < division; i++) {
             let start = {
-                x: this.positionStart.x + ((lambda + gapLambda) * v.x) * i + (lambda + gapLambda) * this.animationOffset * v.x,
-                y: this.positionStart.y + ((lambda + gapLambda) * v.y) * i + (lambda + gapLambda) * this.animationOffset * v.y,
+                x: this.positionStart.x + (i + this.animationOffset) * (lambda + gapLambda) * v.x,
+                y: this.positionStart.y + (i + this.animationOffset) * (lambda + gapLambda) * v.y,
             };
             let end = {
                 x: start.x + lambda * v.x,
