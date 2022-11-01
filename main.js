@@ -2,6 +2,7 @@ import MainNeuron from "./classes/main_neuron.js";
 import InputNeuron from "./classes/input_neuron.js";
 import BiasNeuron from "./classes/bias_neuron.js";
 import OutputNeuron from "./classes/output_neuron.js";
+import AxonLine from "./classes/axon_line.js";
 
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
@@ -17,7 +18,7 @@ const input1 = new InputNeuron(context, {
     offsetX: 80,
     offsetY: 50,
     value: 0,
-    weight: 0,
+    weight: 6.4,
 });
 const input2 = new InputNeuron(context, {
     x: 350,
@@ -26,7 +27,7 @@ const input2 = new InputNeuron(context, {
     offsetX: 80,
     offsetY: 50,
     value: 0,
-    weight: 0,
+    weight: -5,
 });
 const input3 = new InputNeuron(context, {
     x: 350,
@@ -64,8 +65,41 @@ mainNeuron.addInput(input2);
 mainNeuron.addInput(input3);
 mainNeuron.addBias(biasNeuron);
 mainNeuron.addOutput(outputNeuron);
+const axon1 = new AxonLine(context, {
+    startX: input1.position.x,
+    startY: input1.position.y,
+    endX: mainNeuron.position.x,
+    endY: mainNeuron.position.y,
+    getValue: () => input1.weight,
+    range: [-10, 10],
+    sectionLength: 20,
+    gap: 10,
+    animationSpeed: 1,
+});
+const axon2 = new AxonLine(context, {
+    startX: input2.position.x,
+    startY: input2.position.y,
+    endX: mainNeuron.position.x,
+    endY: mainNeuron.position.y,
+    getValue: () => input2.weight,
+    range: [-10, 10],
+    sectionLength: 20,
+    gap: 10,
+    animationSpeed: 1,
+});
+const axon3 = new AxonLine(context, {
+    startX: input3.position.x,
+    startY: input3.position.y,
+    endX: mainNeuron.position.x,
+    endY: mainNeuron.position.y,
+    getValue: () => input3.weight,
+    range: [-10, 10],
+    sectionLength: 20,
+    gap: 10,
+    animationSpeed: 1,
+});
 
-const RENDER_PRORITY = [input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
+const RENDER_PRORITY = [axon1, axon2, axon3, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
 
 export function main() {
     context.font = "40px UnicaOne";
