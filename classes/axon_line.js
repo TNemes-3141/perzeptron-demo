@@ -1,7 +1,7 @@
 const clamp = (num, min, max) => Math.min(Math.max(num, min), max);
 
 class AxonLine {
-    constructor(context, {startX, startY, endX, endY, getValue, range, sectionLength, gap, animationSpeed}) {
+    constructor(context, {startX, startY, endX, endY, getValue, range, sectionLength, gap, animationSpeed, weighted}) {
         this.context = context;
         this.positionStart = {
             x: startX,
@@ -17,11 +17,12 @@ class AxonLine {
         this.sectionLength = sectionLength;
         this.gap = gap;
         this.animationSpeed = animationSpeed;
+        this.weighted = weighted;
         this.animationOffset = 0;
         this.font = "Abel";
     }
 
-    draw() {
+    drawDashed() {
         let v = {
             x: this.positionEnd.x - this.positionStart.x,
             y: this.positionEnd.y - this.positionStart.y,
@@ -50,11 +51,26 @@ class AxonLine {
         this.context.stroke();
     }
 
+    drawContinuous() {
+        let opacity = ((this.value - this.range[0]) / (this.range[1] - this.range[0])) + 0.25 * Math.sin(2  *Math.PI * this.animationOffset);
+        this.context.strokeStyle = "rgba(255, 255, 255, " + clamp(opacity, 0, 1) + ")";
+
+        this.context.beginPath();
+        this.context.moveTo(this.positionStart.x, this.positionStart.y);
+        this.context.lineTo(this.positionEnd.x, this.positionEnd.y);
+        this.context.stroke();
+    }
+
     update() {
         this.value = this.getValue()
         this.context.lineWidth = 1 + 14 * ((this.value - this.range[0]) / (this.range[1] - this.range[0]));
         this.context.strokeStyle = "rgba(255, 255, 255, " + ((this.value - this.range[0]) / (this.range[1] - this.range[0])) + ")";
-        this.draw()
+        if (this.weighted) {
+            this.drawDashed();
+        }
+        else {
+            this.drawContinuous();
+        }
         this.animationOffset += 1/60 * this.animationSpeed;
         if (this.animationOffset > 1) {
             this.animationOffset = 0;

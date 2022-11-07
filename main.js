@@ -75,6 +75,7 @@ const axon1 = new AxonLine(context, {
     sectionLength: 20,
     gap: 10,
     animationSpeed: 1,
+    weighted: true,
 });
 const axon2 = new AxonLine(context, {
     startX: input2.position.x,
@@ -86,6 +87,7 @@ const axon2 = new AxonLine(context, {
     sectionLength: 20,
     gap: 10,
     animationSpeed: 1,
+    weighted: true,
 });
 const axon3 = new AxonLine(context, {
     startX: input3.position.x,
@@ -97,9 +99,22 @@ const axon3 = new AxonLine(context, {
     sectionLength: 20,
     gap: 10,
     animationSpeed: 1,
+    weighted: true,
+});
+const biasAxon = new AxonLine(context, {
+    startX: biasNeuron.position.x,
+    startY: biasNeuron.position.y,
+    endX: biasNeuron.position.x,
+    endY: mainNeuron.position.y,
+    getValue: () => biasNeuron.getValue(),
+    range: [-10, 10],
+    sectionLength: 0,
+    gap: 0,
+    animationSpeed: 0.5,
+    weighted: false,
 });
 
-const RENDER_PRORITY = [axon1, axon2, axon3, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
+const RENDER_PRORITY = [axon1, axon2, axon3, biasAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
 
 export function main() {
     context.font = "40px UnicaOne";
@@ -114,6 +129,11 @@ export function main() {
     input1.value = inputValues[0];
     input2.value = inputValues[1];
     input3.value = inputValues[2];
+
+    context.font = "30px Abel";
+    context.fillText(axon1.value, (axon1.positionEnd.x + axon1.positionStart.x) / 2 + 20, (axon1.positionEnd.y + axon1.positionStart.y) / 2 - 30);
+    context.fillText(axon2.value, (axon2.positionEnd.x + axon2.positionStart.x) / 2, (axon2.positionEnd.y + axon2.positionStart.y) / 2 - 20);
+    context.fillText(axon3.value, (axon3.positionEnd.x + axon3.positionStart.x) / 2 - 20, (axon3.positionEnd.y + axon3.positionStart.y) / 2 - 20);
 
     mainNeuron.getInputs();
 
