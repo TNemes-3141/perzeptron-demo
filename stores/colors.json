@@ -1,0 +1,34 @@
+{
+    "turquoise": {
+        "data": [73, 126, 118],
+        "label": 1
+    },
+    "gray": {
+        "data": [125, 127, 120],
+        "label": 1
+    },
+    "orange": {
+        "data": [255, 117, 20],
+        "label": 0
+    },
+    "violet": {
+        "data": [134, 115, 161],
+        "label": 0
+    },
+    "red": {
+        "data": [204, 6, 5],
+        "label": 1
+    },
+    "dark green": {
+        "data": [44, 85, 69],
+        "label": 1
+    },
+    "white": {
+        "data": [255, 255, 255],
+        "label": 0
+    },
+    "yellow": {
+        "data": [244, 169, 0],
+        "label": 0
+    }
+}
