@@ -127,11 +127,11 @@ const outputAxon = new AxonLine(context, {
     weighted: false,
 });
 const inputGrid = new InputGrid(context, {
-    x: 50,
-    y: 200,
+    x: 40,
+    y: 110,
     width: 200,
     columns: 3,
-    childAspectRatio: 1,
+    childAspectRatio: 2/3,
     gap: 20,
 });
 
