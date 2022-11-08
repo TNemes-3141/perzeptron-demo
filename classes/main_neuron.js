@@ -50,6 +50,15 @@ class MainNeuron {
         this.context.textAlign = "center";
         this.context.fillStyle = "white";
         this.context.fillText(this.value, this.position.x - this.sprite.width / 4, this.position.y + fontSize / 4);
+
+        this.context.lineWidth = 3;
+        this.context.strokeStyle = "white";
+        this.context.beginPath();
+        this.context.moveTo(this.position.x + 11, this.position.y + 15);
+        this.context.lineTo(this.position.x + 31, this.position.y + 15);
+        this.context.lineTo(this.position.x + 31, this.position.y - 15);
+        this.context.lineTo(this.position.x + 51, this.position.y - 15);
+        this.context.stroke();
     }
 
     update() {

@@ -104,17 +104,29 @@ const axon3 = new AxonLine(context, {
 const biasAxon = new AxonLine(context, {
     startX: biasNeuron.position.x,
     startY: biasNeuron.position.y,
-    endX: biasNeuron.position.x,
+    endX: biasNeuron.position.x + 1,
     endY: mainNeuron.position.y,
     getValue: () => biasNeuron.getValue(),
     range: [-10, 10],
+    sectionLength: 20,
+    gap: 10,
+    animationSpeed: 1,
+    weighted: true,
+});
+const outputAxon = new AxonLine(context, {
+    startX: mainNeuron.position.x,
+    startY: mainNeuron.position.y,
+    endX: outputNeuron.position.x,
+    endY: outputNeuron.position.y,
+    getValue: () => outputNeuron.getValue(),
+    range: [-1, 1],
     sectionLength: 0,
     gap: 0,
-    animationSpeed: 0.5,
+    animationSpeed: 1,
     weighted: false,
 });
 
-const RENDER_PRORITY = [axon1, axon2, axon3, biasAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
+const RENDER_PRORITY = [axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
 
 export function main() {
     context.font = "40px UnicaOne";
