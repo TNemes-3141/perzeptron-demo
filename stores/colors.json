@@ -30,5 +30,13 @@
     "yellow": {
         "data": [244, 169, 0],
         "label": 0
+    },
+    "green": {
+        "data": [117, 196, 87],
+        "label": 0
+    },
+    "bordeaux": {
+        "data": [117, 21, 30],
+        "label": 1
     }
 }

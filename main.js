@@ -127,12 +127,12 @@ const outputAxon = new AxonLine(context, {
     weighted: false,
 });
 const inputGrid = new InputGrid(context, {
-    x: 40,
-    y: 110,
-    width: 200,
-    columns: 3,
-    childAspectRatio: 2/3,
-    gap: 20,
+    x: 65,
+    y: 100,
+    width: 150,
+    columns: 2,
+    childAspectRatio: 1,
+    gap: 40,
 });
 
 const RENDER_PRORITY = [inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
@@ -144,6 +144,7 @@ export function main() {
     context.fillText("R", input1.position.x, input1.position.y - 60);
     context.fillText("G", input2.position.x, input2.position.y - 60);
     context.fillText("B", input3.position.x, input3.position.y - 60);
+    context.fillText("INPUTS", 140, 70);
 
     let inputValues = [255, 165, 79];
 
