@@ -4,12 +4,13 @@ import BiasNeuron from "./classes/bias_neuron.js";
 import OutputNeuron from "./classes/output_neuron.js";
 import AxonLine from "./classes/axon_line.js";
 import InputGrid from "./classes/input_grid.js";
+import PreviewWindow from "./classes/preview_window.js";
 
 // Global constants
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
 canvas.width = 1280;
-canvas.height = 640;
+canvas.height = 650;
 
 // Global variables
 let selectedItemIndex = 0;
@@ -174,9 +175,27 @@ const inputGrid = new InputGrid(context, {
     childAspectRatio: 1,
     gap: 40,
 });
+const preview1 = new PreviewWindow(context, {
+    x: 970,
+    y: 50,
+    width: 250,
+    height: 150,
+    text: "Output",
+    getBackground: () => inputGrid.getItem(selectedItemIndex).color,
+    foreground: "black",
+});
+const preview2 = new PreviewWindow(context, {
+    x: 970,
+    y: 450,
+    width: 250,
+    height: 150,
+    text: "Output",
+    getBackground: () => inputGrid.getItem(selectedItemIndex).color,
+    foreground: "white",
+});
 
 // Define rendering order (layers)
-const RENDER_PRORITY = [inputAxon1, inputAxon2, inputAxon3, inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
+const RENDER_PRORITY = [inputAxon1, inputAxon2, inputAxon3, inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron, preview1, preview2];
 
 // Register events
 canvas.onmousemove = function(args) {

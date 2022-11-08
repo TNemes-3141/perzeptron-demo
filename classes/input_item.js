@@ -16,6 +16,7 @@ class InputItem {
         this.title = title;
 
         this.hover = false;
+        this.color = "rgb(" + this.data[0] + ", " + this.data[1] + ", " + this.data[2] + ")";
     }
 
     onMouseMove(mousePos) {
@@ -23,7 +24,8 @@ class InputItem {
     }
 
     draw() {
-        this.context.fillStyle = "rgb(" + this.data[0] + ", " + this.data[1] + ", " + this.data[2] + ")";
+        this.color = "rgb(" + this.data[0] + ", " + this.data[1] + ", " + this.data[2] + ")";
+        this.context.fillStyle = this.color
         this.context.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
         this.context.lineWidth = 5;
         this.context.strokeStyle = "white";
@@ -35,7 +37,7 @@ class InputItem {
         if (this.hover) {
             this.context.font = "25px UnicaOne";
             this.context.textAlign = "center";
-            this.context.fillStyle = "rgb(" + this.data[0] + ", " + this.data[1] + ", " + this.data[2] + ")";
+            this.context.fillStyle = this.color;
             this.context.fillText(this.title, 140, 580);
             this.context.fillStyle = "white"
             this.context.fillText(this.data[0] + ", " + this.data[1] + ", " + this.data[2], 140, 610);
