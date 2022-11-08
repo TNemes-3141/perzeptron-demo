@@ -8,7 +8,7 @@ import InputGrid from "./classes/input_grid.js";
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
 canvas.width = 1280;
-canvas.height = 720;
+canvas.height = 640;
 
 console.log(context);
 
