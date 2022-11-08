@@ -5,12 +5,14 @@ import OutputNeuron from "./classes/output_neuron.js";
 import AxonLine from "./classes/axon_line.js";
 import InputGrid from "./classes/input_grid.js";
 
-// Canvas and global drawing context
+// Global constants
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
 canvas.width = 1280;
 canvas.height = 640;
 
+// Global variables
+let selectedItemIndex = 0;
 console.log(context);
 
 // Objects
@@ -186,6 +188,13 @@ canvas.onmousemove = function(args) {
         }
     });
 }
+canvas.onmousedown = function(args) {
+    var mousePos = getMousePosition(this.getBoundingClientRect(), args.clientX, args.clientY);
+    var returnedIndex = inputGrid.onMouseClick(mousePos);
+    if (returnedIndex >= 0) {
+        selectedItemIndex = returnedIndex;
+    }
+}
 
 function getMousePosition(clientRect, clientX, clientY) {
     return {
@@ -204,7 +213,7 @@ export function main() {
     context.fillText("B", input3.position.x, input3.position.y - 60);
     context.fillText("INPUTS", 140, 70);
 
-    let inputItem = inputGrid.getItem(0);
+    let inputItem = inputGrid.getItem(selectedItemIndex);
 
     inputAxon1.positionStart.x = inputItem.position.x + inputItem.size.width / 2;
     inputAxon1.positionStart.y = inputItem.position.y + inputItem.size.width / 2;

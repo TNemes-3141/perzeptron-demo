@@ -68,6 +68,16 @@ class InputGrid {
         }
     }
 
+    onMouseClick(mousePos) {
+        for (let i = 0; i < this.children.length; i++) {
+            const child = this.children[i];
+            if (rectContainsPoint(child.position.x, child.position.y, child.size.width, child.size.height, mousePos)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
     update() {
         this.children.forEach(child => child.update());
     }
