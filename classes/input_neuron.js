@@ -17,7 +17,7 @@ class InputNeuron {
         this.offset = {
             x: offsetX,
             y: offsetY,
-        }
+        };
         this.value = value;
         this.weight = weight;
         this.operation = Operations.Add;

@@ -3,6 +3,7 @@ import InputNeuron from "./classes/input_neuron.js";
 import BiasNeuron from "./classes/bias_neuron.js";
 import OutputNeuron from "./classes/output_neuron.js";
 import AxonLine from "./classes/axon_line.js";
+import InputGrid from "./classes/input_grid.js";
 
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
@@ -125,8 +126,16 @@ const outputAxon = new AxonLine(context, {
     animationSpeed: 1,
     weighted: false,
 });
+const inputGrid = new InputGrid(context, {
+    x: 50,
+    y: 200,
+    width: 200,
+    columns: 3,
+    childAspectRatio: 1,
+    gap: 20,
+});
 
-const RENDER_PRORITY = [axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
+const RENDER_PRORITY = [inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
 
 export function main() {
     context.font = "40px UnicaOne";
