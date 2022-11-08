@@ -46,6 +46,17 @@ class InputGrid {
             });
     }
 
+    getItem(index) {
+        if (typeof this.children[index] !== "undefined") {
+            return this.children[index];
+        }
+        else {
+            return {
+                data: [0, 0, 0],
+            };
+        }
+    }
+
     update() {
         this.children.forEach(child => child.update());
     }

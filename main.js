@@ -146,11 +146,11 @@ export function main() {
     context.fillText("B", input3.position.x, input3.position.y - 60);
     context.fillText("INPUTS", 140, 70);
 
-    let inputValues = [255, 165, 79];
+    let inputItem = inputGrid.getItem(0);
 
-    input1.value = inputValues[0];
-    input2.value = inputValues[1];
-    input3.value = inputValues[2];
+    input1.value = inputItem.data[0];
+    input2.value = inputItem.data[1];
+    input3.value = inputItem.data[2];
 
     context.font = "30px Abel";
     context.fillText(axon1.value, (axon1.positionEnd.x + axon1.positionStart.x) / 2 + 20, (axon1.positionEnd.y + axon1.positionStart.y) / 2 - 30);
