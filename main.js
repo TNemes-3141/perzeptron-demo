@@ -137,6 +137,23 @@ const inputGrid = new InputGrid(context, {
 
 const RENDER_PRORITY = [inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
 
+canvas.onmousemove = function(args) {
+    var mousePos = getMousePosition(this.getBoundingClientRect(), args.clientX, args.clientY);
+    RENDER_PRORITY.forEach(instance => {
+        if (typeof(instance.onMouseMove) == "function")
+        {
+            instance.onMouseMove(mousePos);
+        }
+    });
+}
+
+function getMousePosition(clientRect, clientX, clientY) {
+    return {
+        x: clientX - clientRect.left,
+        y: clientY - clientRect.top,
+    }
+}
+
 export function main() {
     context.font = "40px UnicaOne";
     context.textAlign = "center";

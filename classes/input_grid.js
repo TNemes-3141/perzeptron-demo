@@ -1,4 +1,5 @@
 import InputItem from "./input_item.js";
+import { rectContainsPoint } from "../shared/rect_contains_point.js";
 
 class InputGrid {
     constructor(context, {x, y, width, columns, childAspectRatio, gap}) {
@@ -8,6 +9,7 @@ class InputGrid {
             y: y,
         };
         this.width = width;
+        this.height = 0;
         this.columns = columns;
         this.rows = 0;
         this.childAspectRatio = childAspectRatio;
@@ -34,6 +36,7 @@ class InputGrid {
 
                 let itemIndex = 0;
                 this.rows = Math.ceil(this.children.length / this.columns);
+                this.height = this.childHeight * this.rows + this.gap * (this.rows - 1);
                 for (let i = 0; i < this.rows; i++) {
                     for (let j = 0; j < this.columns; j++) {
                         if (itemIndex < this.children.length) {
@@ -54,6 +57,12 @@ class InputGrid {
             return {
                 data: [0, 0, 0],
             };
+        }
+    }
+
+    onMouseMove(mousePos) {
+        if (rectContainsPoint(this.position.x - 10, this.position.y - 10, this.width + 20, this.height + 20, mousePos)) {
+            this.children.forEach(child => child.onMouseMove(mousePos));
         }
     }
 
