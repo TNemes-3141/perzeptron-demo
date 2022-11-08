@@ -5,6 +5,7 @@ import OutputNeuron from "./classes/output_neuron.js";
 import AxonLine from "./classes/axon_line.js";
 import InputGrid from "./classes/input_grid.js";
 
+// Canvas and global drawing context
 const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
 canvas.width = 1280;
@@ -12,6 +13,7 @@ canvas.height = 640;
 
 console.log(context);
 
+// Objects
 const input1 = new InputNeuron(context, {
     x: 350,
     y: 200,
@@ -126,6 +128,42 @@ const outputAxon = new AxonLine(context, {
     animationSpeed: 1,
     weighted: false,
 });
+const inputAxon1 = new AxonLine(context, {
+    startX: 0,
+    startY: 0,
+    endX: input1.position.x,
+    endY: input1.position.y,
+    getValue: () => -0.5,
+    range: [-1, 1],
+    sectionLength: 20,
+    gap: 10,
+    animationSpeed: 1.3,
+    weighted: true,
+})
+const inputAxon2 = new AxonLine(context, {
+    startX: 0,
+    startY: 0,
+    endX: input2.position.x,
+    endY: input2.position.y,
+    getValue: () => -0.5,
+    range: [-1, 1],
+    sectionLength: 20,
+    gap: 10,
+    animationSpeed: 1.3,
+    weighted: true,
+})
+const inputAxon3 = new AxonLine(context, {
+    startX: 0,
+    startY: 0,
+    endX: input3.position.x,
+    endY: input3.position.y,
+    getValue: () => -0.5,
+    range: [-1, 1],
+    sectionLength: 20,
+    gap: 10,
+    animationSpeed: 1.3,
+    weighted: true,
+})
 const inputGrid = new InputGrid(context, {
     x: 65,
     y: 100,
@@ -135,8 +173,10 @@ const inputGrid = new InputGrid(context, {
     gap: 40,
 });
 
-const RENDER_PRORITY = [inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
+// Define rendering order (layers)
+const RENDER_PRORITY = [inputAxon1, inputAxon2, inputAxon3, inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron];
 
+// Register events
 canvas.onmousemove = function(args) {
     var mousePos = getMousePosition(this.getBoundingClientRect(), args.clientX, args.clientY);
     RENDER_PRORITY.forEach(instance => {
@@ -154,6 +194,7 @@ function getMousePosition(clientRect, clientX, clientY) {
     }
 }
 
+// --- MAIN ---
 export function main() {
     context.font = "40px UnicaOne";
     context.textAlign = "center";
@@ -164,6 +205,13 @@ export function main() {
     context.fillText("INPUTS", 140, 70);
 
     let inputItem = inputGrid.getItem(0);
+
+    inputAxon1.positionStart.x = inputItem.position.x + inputItem.size.width / 2;
+    inputAxon1.positionStart.y = inputItem.position.y + inputItem.size.width / 2;
+    inputAxon2.positionStart.x = inputItem.position.x + inputItem.size.width / 2;
+    inputAxon2.positionStart.y = inputItem.position.y + inputItem.size.width / 2;
+    inputAxon3.positionStart.x = inputItem.position.x + inputItem.size.width / 2;
+    inputAxon3.positionStart.y = inputItem.position.y + inputItem.size.width / 2;
 
     input1.value = inputItem.data[0];
     input2.value = inputItem.data[1];
@@ -179,6 +227,7 @@ export function main() {
     return RENDER_PRORITY;
 }
 
+// --- CLEAR CANVAS ---
 export function clear() {
     context.fillStyle = "rgb(1, 65, 91)";
     context.fillRect(0, 0, canvas.width, canvas.height);

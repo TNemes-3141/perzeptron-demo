@@ -55,6 +55,8 @@ class InputGrid {
         }
         else {
             return {
+                position: {x: 0, y: 0},
+                size: {width: 0, height: 0},
                 data: [0, 0, 0],
             };
         }
