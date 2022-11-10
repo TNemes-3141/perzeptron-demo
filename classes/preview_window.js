@@ -21,9 +21,7 @@ class PreviewWindow {
         this.context.fillRect(this.position.x, this.position.y, this.size.width, this.size.height);
         this.context.lineWidth = 5;
         this.context.strokeStyle = "black";
-        this.context.beginPath();
-        this.context.roundRect(this.position.x, this.position.y, this.size.width, this.size.height, 5);
-        this.context.stroke();
+        this.context.strokeRect(this.position.x, this.position.y, this.size.width, this.size.height);
         let fontSize = 40;
         this.context.font = fontSize + "px UnicaOne";
         this.context.textAlign = "center";

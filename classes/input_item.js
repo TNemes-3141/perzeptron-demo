@@ -31,9 +31,7 @@ class InputItem {
         this.context.strokeStyle = "white";
         this.context.strokeRect(this.position.x, this.position.y, this.size.width, this.size.height);
         this.context.strokeStyle = this.hover ? "gray" : "black";
-        this.context.beginPath();
-        this.context.roundRect(this.position.x - 5, this.position.y - 5, this.size.width + 10, this.size.height + 10, 5);
-        this.context.stroke();
+        this.context.strokeRect(this.position.x - 5, this.position.y - 5, this.size.width + 10, this.size.height + 10);
         if (this.hover) {
             this.context.font = "25px UnicaOne";
             this.context.textAlign = "center";
