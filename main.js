@@ -5,6 +5,7 @@ import OutputNeuron from "./classes/output_neuron.js";
 import AxonLine from "./classes/axon_line.js";
 import InputGrid from "./classes/input_grid.js";
 import PreviewWindow from "./classes/preview_window.js";
+import ResultArrow from "./classes/result_arrow.js";
 
 // Global constants
 const canvas = document.getElementById("game-canvas");
@@ -193,9 +194,18 @@ const preview2 = new PreviewWindow(context, {
     getBackground: () => inputGrid.getItem(selectedItemIndex).color,
     foreground: "white",
 });
+const resultArrow = new ResultArrow(context, {
+    startX: outputNeuron.position.x + 80,
+    startY: outputNeuron.position.y,
+    endX1: preview1.position.x + preview1.size.width / 2,
+    endY1: preview1.position.y + preview1.size.height + 20,
+    endX2: preview2.position.x + preview2.size.width / 2,
+    endY2: preview2.position.y - 20,
+    getResults: () => outputNeuron.getValue(),
+});
 
 // Define rendering order (layers)
-const RENDER_PRORITY = [inputAxon1, inputAxon2, inputAxon3, inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron, preview1, preview2];
+const RENDER_PRORITY = [inputAxon1, inputAxon2, inputAxon3, inputGrid, axon1, axon2, axon3, biasAxon, outputAxon, input1, input2, input3, biasNeuron, mainNeuron, outputNeuron, preview1, preview2, resultArrow];
 
 // Register events
 canvas.onmousemove = function(args) {
