@@ -9,11 +9,25 @@
     <title>Perzeptron Demo</title>
 </head>
 <body>
-    <div id="game-div">
-        <div id="inner-game-div">
-            <canvas id="game-canvas"></canvas>
+    <main>
+        <h1 id="main-title">Das Perzeptron</h1>
+        <hr>
+        <p id="main-paragraph">Der Grundbaustein jedes neuronalen Netzwerks &ndash; ein einzelnes Neuron. Versuche, die Gewichte so zu kalibrieren, dass das Perzeptron korrekt vorhersagt, welche Schriftfarbe auf der gegebenen Hintergrundfarbe besser lesbar ist!</p>
+        <div class="slider-container">
+            <input type="range" min="-100" max="100" value="1" class="slider" id="w1">
         </div>
-    </div>
+        <div class="slider-container">
+            <input type="range" min="-100" max="100" value="1" class="slider" id="w2">
+        </div>
+        <div class="slider-container">
+            <input type="range" min="-100" max="100" value="1" class="slider" id="w3">
+        </div>
+        <div id="game-div">
+            <div id="inner-game-div">
+                <canvas id="game-canvas"></canvas>
+            </div>
+        </div>
+    </main>
     <script type="module" src="./index.js"></script>
 </body>
 </html>
