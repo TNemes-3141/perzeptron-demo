@@ -184,6 +184,7 @@ const preview1 = new PreviewWindow(context, {
     text: "Output",
     getBackground: () => inputGrid.getItem(selectedItemIndex).color,
     foreground: "black",
+    getSelected: () => outputNeuron.getValue() == 0,
 });
 const preview2 = new PreviewWindow(context, {
     x: 970,
@@ -193,6 +194,7 @@ const preview2 = new PreviewWindow(context, {
     text: "Output",
     getBackground: () => inputGrid.getItem(selectedItemIndex).color,
     foreground: "white",
+    getSelected: () => outputNeuron.getValue() == 1,
 });
 const resultArrow = new ResultArrow(context, {
     startX: outputNeuron.position.x + 80,
