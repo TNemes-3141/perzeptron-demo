@@ -12,6 +12,9 @@ const canvas = document.getElementById("game-canvas");
 const context = canvas.getContext("2d");
 canvas.width = 1280;
 canvas.height = 650;
+const slider1 = document.getElementById("w1");
+const slider2 = document.getElementById("w2");
+const slider3 = document.getElementById("w3");
 
 // Global variables
 let selectedItemIndex = 0;
@@ -25,7 +28,7 @@ const input1 = new InputNeuron(context, {
     offsetX: 80,
     offsetY: 50,
     value: 0,
-    weight: 6.4,
+    weight: slider1.value / 10,
 });
 const input2 = new InputNeuron(context, {
     x: 350,
@@ -34,7 +37,7 @@ const input2 = new InputNeuron(context, {
     offsetX: 80,
     offsetY: 50,
     value: 0,
-    weight: -5,
+    weight: slider2.value / 10,
 });
 const input3 = new InputNeuron(context, {
     x: 350,
@@ -43,7 +46,7 @@ const input3 = new InputNeuron(context, {
     offsetX: 80,
     offsetY: 50,
     value: 0,
-    weight: 0,
+    weight: slider3.value / 10,
 });
 const biasNeuron = new BiasNeuron(context, {
     x: 620,
@@ -232,6 +235,16 @@ function getMousePosition(clientRect, clientX, clientY) {
         x: clientX - clientRect.left,
         y: clientY - clientRect.top,
     }
+}
+
+slider1.oninput = function() {
+    input1.setWeight(this.value / 10);
+}
+slider2.oninput = function() {
+    input2.setWeight(this.value / 10);
+}
+slider3.oninput = function() {
+    input3.setWeight(this.value / 10);
 }
 
 // --- MAIN ---

@@ -20,8 +20,12 @@ class InputNeuron {
         };
         this.value = value;
         this.weight = weight;
-        this.operation = Operations.Add;
+        this.operation = Operations.Multiply;
         this.font = "Abel";
+    }
+
+    setWeight(value) {
+        this.weight = value;
     }
 
     getValue() {
