@@ -49,7 +49,7 @@ class MainNeuron {
         this.context.font = fontSize + "px " + this.font;
         this.context.textAlign = "center";
         this.context.fillStyle = "white";
-        this.context.fillText(this.value, this.position.x - this.sprite.width / 4, this.position.y + fontSize / 4);
+        this.context.fillText(this.value.toFixed(1), this.position.x - this.sprite.width / 4, this.position.y + fontSize / 4);
 
         this.context.lineWidth = 3;
         this.context.strokeStyle = "white";

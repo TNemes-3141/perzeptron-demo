@@ -64,7 +64,7 @@ class AxonLine {
     update() {
         this.value = this.getValue()
         this.context.lineWidth = 1 + 14 * ((this.value - this.range[0]) / (this.range[1] - this.range[0]));
-        this.context.strokeStyle = "rgba(255, 255, 255, " + ((this.value - this.range[0]) / (this.range[1] - this.range[0])) + ")";
+        this.context.strokeStyle = "rgba(255, 255, 255, " + clamp((this.value - this.range[0]) / (this.range[1] - this.range[0]), 0.2, 1) + ")";
         if (this.weighted) {
             this.drawDashed();
         }
