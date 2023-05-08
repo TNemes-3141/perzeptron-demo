@@ -54,9 +54,18 @@ main {
     width: 70%;
     padding: 10px 0;
     margin: 0 auto;
+    display: grid;
+    grid-template-columns: 10% 90%;
+    grid-template-rows: 50px;
+    align-items: center;
+}
+.weight {
+    width: 50px;
 }
 .slider {
     -webkit-appearance: none;
+    margin-top: auto;
+    margin-bottom: auto;
     appearance: none;
     width: 100%;
     height: 15px;
