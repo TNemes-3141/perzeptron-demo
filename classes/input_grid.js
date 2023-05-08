@@ -19,7 +19,7 @@ class InputGrid {
         this.childHeight = this.childWidth / this.childAspectRatio;
 
         this.children = []
-        fetch("colors.json")
+        fetch("https://totemi1324.github.io/perzeptron-demo/colors.json")
             .then((response) => response.json())
             .then((data) => {
                 for (var key in data) {
