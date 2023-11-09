@@ -50,8 +50,18 @@ main {
     color: white;
 
 }
+#options-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+#options-container > * {
+    display: block;
+}
+
 .slider-container {
-    width: 70%;
+    width: 500%;
     padding: 10px 0;
     margin: 0 auto;
     display: grid;
@@ -95,6 +105,45 @@ main {
     background: #a6bc09;
     cursor: pointer;
 }
+.labeled-setting, .level-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+}
+.labeled-setting > p {
+    font-family: 'Abel', 'sans-serif';
+    color: white;
+    font-size: 1.3em;
+    padding: 10px 0;
+}
+.labeled-setting > input {
+    height: 50px;
+    background: rgb(45, 85, 109);
+    border: 3px solid rgb(66, 124, 160);
+    border-radius: 10px;
+    font-family: 'Abel', 'sans-serif';
+    color: white;
+    font-size: 1em;
+    padding: 10px;
+}
+.labeled-setting > select {
+    height: 50px;
+    width: 70px;
+    background: rgb(45, 85, 109);
+    border: 3px solid rgb(66, 124, 160);
+    border-radius: 10px;
+    font-family: 'Abel', 'sans-serif';
+    color: white;
+    font-size: 1em;
+    padding: 10px;
+}
+option {
+    font-family: 'Abel', 'sans-serif';
+    color: white;
+    font-size: 1em;
+}
+
 .spacer {
     height: 50px;
 }
