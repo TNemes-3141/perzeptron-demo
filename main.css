@@ -95,6 +95,9 @@ main {
     background: #a6bc09;
     cursor: pointer;
 }
+.spacer {
+    height: 50px;
+}
 
 #game-div {
     display: flex;
