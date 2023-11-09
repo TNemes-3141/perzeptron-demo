@@ -1,5 +1,5 @@
 import MainNeuron from "./classes/main_neuron.js";
-import InputNeuron from "./classes/input_neuron.js";
+import { InputNeuron, Operations } from "./classes/input_neuron.js";
 import BiasNeuron from "./classes/bias_neuron.js";
 import OutputNeuron from "./classes/output_neuron.js";
 import AxonLine from "./classes/axon_line.js";
@@ -15,6 +15,8 @@ canvas.height = 650;
 const slider1 = document.getElementById("w1");
 const slider2 = document.getElementById("w2");
 const slider3 = document.getElementById("w3");
+const arithmeticSelector = document.getElementById("arithmetic-selector");
+arithmeticSelector.onchange = selectOperation;
 
 // Global variables
 let selectedItemIndex = 0;
@@ -245,6 +247,33 @@ slider2.oninput = function() {
 }
 slider3.oninput = function() {
     input3.setWeight(this.value / 10);
+}
+function selectOperation() {
+  var newOperationInt = parseInt(arithmeticSelector.value);
+  switch (newOperationInt) {
+    case 0:
+      input1.setOperation(Operations.Add);
+      input2.setOperation(Operations.Add);
+      input3.setOperation(Operations.Add);
+      break;
+    case 1:
+      input1.setOperation(Operations.Subtract);
+      input2.setOperation(Operations.Subtract);
+      input3.setOperation(Operations.Subtract);
+      break;
+    case 2:
+      input1.setOperation(Operations.Multiply);
+      input2.setOperation(Operations.Multiply);
+      input3.setOperation(Operations.Multiply);
+      break;
+    case 3:
+      input1.setOperation(Operations.Divide);
+      input2.setOperation(Operations.Divide);
+      input3.setOperation(Operations.Divide);
+      break;
+    default:
+      break;
+  }
 }
 
 // --- MAIN ---

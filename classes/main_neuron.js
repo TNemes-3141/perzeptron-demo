@@ -45,7 +45,7 @@ class MainNeuron {
 
     draw() {
         this.context.drawImage(this.sprite, this.position.x - this.offset.x, this.position.y - this.offset.y);
-        let fontSize = 25;
+        let fontSize = 20;
         this.context.font = fontSize + "px " + this.font;
         this.context.textAlign = "center";
         this.context.fillStyle = "white";
